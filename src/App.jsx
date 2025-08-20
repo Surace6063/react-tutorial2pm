@@ -19,6 +19,7 @@ const App = () => {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
           <Route path="/products" element={<ProductPage />} />
+          <Route path="/product/:id" element={<SingleProductPage />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="/cart" element={<Cartpage />} />
@@ -26,7 +27,7 @@ const App = () => {
         </Route>
         <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/product/:id" element={<SingleProductPage />} />
+        
 
         {/* error page */}
         <Route path="*" element={<NotFoundPage />} />
