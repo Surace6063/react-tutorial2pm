@@ -2,6 +2,6 @@ import { Navigate } from "react-router-dom"
 
 const ProtectedRoute = () => {
     const isAuthenticated = false
-  return !isAuthenticated && <Navigate to='/login' />
+  return !isAuthenticated && <Navigate to='/login' replace />
 }
 export default ProtectedRoute
