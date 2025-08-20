@@ -7,22 +7,24 @@ import SingleProductPage from "./pages/SingleProductPage"
 import NotFoundPage from "./pages/NotFoundPage"
 import ProtectedRoute from "./utils/ProtectedRoute"
 import LoginPage from "./pages/LoginPage"
+import MainLayout from "./utils/MainLayout"
 
 
 const App = () => {
   return (
     <div>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage />}  />
-        <Route path="/products" element={<ProductPage />} />
 
-       <Route element={<ProtectedRoute />}>
-         <Route path="/cart" element={<Cartpage />} />
-       </Route>
 
-       <Route path="/login" element={<LoginPage />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/products" element={<ProductPage />} />
 
+          <Route element={<ProtectedRoute />}>
+            <Route path="/cart" element={<Cartpage />} />
+          </Route>
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
 
         <Route path="/product/:id" element={<SingleProductPage />} />
 
