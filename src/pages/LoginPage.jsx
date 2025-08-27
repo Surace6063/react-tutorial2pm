@@ -1,7 +1,11 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form"
+import { registerFormValidationSchema } from "../utils/validate";
 
 const LoginPage = () => {
-  const {register,handleSubmit} = useForm()
+  const {register,handleSubmit, formState:{errors, isSubmitting}} = useForm({
+    resolver: yupResolver(registerFormValidationSchema)
+  })
 
   const onSubmit = (data) => {
     console.log(data);
@@ -22,6 +26,7 @@ const LoginPage = () => {
                 placeholder="John"
                 className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent bg-slate-50"
               />
+              {errors.first_name && <p className="text-red-500 text-sm mt-1">{errors.first_name.message}</p>}
             </div>
             <div className="flex-1">
               <label className="block mb-1 text-slate-700 font-medium">Last Name</label>
@@ -31,6 +36,7 @@ const LoginPage = () => {
                 placeholder="Doe"
                 className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent bg-slate-50"
               />
+              {errors.last_name && <p className="text-red-500 text-sm mt-1">{errors.last_name.message}</p>}
             </div>
           </div>
 
@@ -43,6 +49,7 @@ const LoginPage = () => {
               placeholder="john@example.com"
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent bg-slate-50"
             />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
           </div>
 
           {/* Password */}
@@ -54,6 +61,7 @@ const LoginPage = () => {
               placeholder="Enter Password"
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent bg-slate-50"
             />
+            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
           </div>
 
           {/* Confirm Password */}
@@ -64,6 +72,7 @@ const LoginPage = () => {
               placeholder="Confirm Password"
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent bg-slate-50"
             />
+            {errors.conform_password && <p className="text-red-500 text-sm mt-1">{errors.conform_password.message}</p>}
           </div>
 
           {/* Submit Button */}
