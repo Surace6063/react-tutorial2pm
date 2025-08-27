@@ -8,6 +8,8 @@ import NotFoundPage from "./pages/NotFoundPage"
 import ProtectedRoute from "./utils/ProtectedRoute"
 import LoginPage from "./pages/LoginPage"
 import MainLayout from "./utils/MainLayout"
+import Products from "./pages/Products"
+import ProductDetailPage from "./pages/ProductDetailPage"
 
 
 const App = () => {
@@ -15,11 +17,10 @@ const App = () => {
     <div>
       <Routes>
 
-
         <Route element={<MainLayout />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/products" element={<ProductPage />} />
-          <Route path="/product/:id" element={<SingleProductPage />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetailPage />} />
 
           <Route element={<ProtectedRoute />}>
             <Route path="/cart" element={<Cartpage />} />
